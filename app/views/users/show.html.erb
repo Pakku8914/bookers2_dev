@@ -1,0 +1,42 @@
+<main>
+  <% if flash[:notice] %>
+     <p id="notice">
+       <%= flash[:notice] %>
+     </p>
+  <% end %>
+  <div class="container px-5 px-sm-0">
+    <div class="row">
+      <%= render 'users/userinfo', user_info: @user_info, book: @book %>
+      <div class="col-md-8 offset-md-1">
+        <h2>Books</h2>
+        <table class="table table-hover table-inverse">
+          <thead>
+            <tr>
+              <th></th>
+              <th>Title</th>
+              <th>Opinion</th>
+              <th colspan="3"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @my_books.each do |my_book| %>
+              <tr>
+                <td>
+                  <%= link_to user_path(User.find(my_book.user_id)) do %>
+                    <%= attachment_image_tag User.find(my_book.user_id), :profile_image, :fill, 40, 40, fallback: "no_image-ede28af4bad96368ef41be1b4be1cffce0d9402540f75d17895e32cb0d2af5e6.jpg" %>
+                  <% end %>
+                </td>
+                <td>
+                  <%= link_to my_book.title, book_path(my_book.id) %>
+                </td>
+                <td>
+                  <%= my_book.body %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</main>
