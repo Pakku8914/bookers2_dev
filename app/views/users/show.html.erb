@@ -1,7 +1,7 @@
 <main>
   <% if flash[:notice] %>
      <p id="notice">
-       <%= flash[:notice] %>
+      <%= flash[:notice] %>
      </p>
   <% end %>
   <div class="container px-5 px-sm-0">
@@ -31,6 +31,22 @@
                 </td>
                 <td>
                   <%= my_book.body %>
+                </td>
+                <td>
+                  <% if current_user.favorited_by?(my_book) %>
+                    <%= link_to book_favorites_path(my_book), method: :delete do %>
+                      <i class="fas fa-heart"></i>
+                      <%= my_book.favorites.count %>
+                    <% end %>
+                  <% else %>
+                    <%= link_to book_favorites_path(my_book), method: :post do %>
+                      <i class="fas fa-heart"></i>
+                      <%= my_book.favorites.count %>
+                    <% end %>
+                  <% end %>
+                </td>
+                <td>
+                  コメント数: <%= my_book.book_comments.count %>
                 </td>
               </tr>
             <% end %>

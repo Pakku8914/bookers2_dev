@@ -15,7 +15,7 @@
             <tbody>
               <% @user_all.each do |user| %>
               <tr>
-                <td><%= attachment_image_tag user, :profile_image, fallback: "no_image-ede28af4bad96368ef41be1b4be1cffce0d9402540f75d17895e32cb0d2af5e6.jpg" %></td>
+                <td><%= attachment_image_tag user, :profile_image, :fill, 40, 40, fallback: "no_image-ede28af4bad96368ef41be1b4be1cffce0d9402540f75d17895e32cb0d2af5e6.jpg" %></td>
                 <td><%= user.name %></td>
                 <td><%= link_to "Show", user_path(user.id)%></td>
               </tr>

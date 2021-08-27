@@ -166,7 +166,7 @@ describe '[STEP1] ユーザログイン前のテスト' do
       it 'passwordフォームが表示される' do
         expect(page).to have_field 'user[password]'
       end
-      it 'Log inボタンが表示される' do
+      it 'Sign upボタンが表示される' do
         expect(page).to have_button 'Log in'
       end
       it 'emailフォームは表示されない' do
